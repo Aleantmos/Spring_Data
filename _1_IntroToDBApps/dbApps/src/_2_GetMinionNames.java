@@ -35,6 +35,7 @@ public class _2_GetMinionNames {
 
         if (!villainSet.next()) {
             System.out.printf(NO_VILLAIN_FORMAT, villainId);
+            connection.close();
             return;
         }
 
