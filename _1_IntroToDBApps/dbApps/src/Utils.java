@@ -13,6 +13,8 @@ enum Utils {
         properties.setProperty(Constants.USER_KEY, Constants.USER_VALUE);
         properties.setProperty(Constants.PASSWORD_KEY, Constants.PASSWORD_VALUE);
 
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/minions_db", properties);
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/minions_db", properties);
+        connection.setAutoCommit(false);
+        return connection;
     }
 }
