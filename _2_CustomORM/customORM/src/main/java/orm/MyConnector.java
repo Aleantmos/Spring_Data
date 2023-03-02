@@ -11,7 +11,7 @@ public class MyConnector {
 
     private static Connection connection;
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/";
     private static final String DATABASE_NAME = "custom-orm";
     private static final String PARAMETERS_FOR_THE_DATABASE =
             "?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC";

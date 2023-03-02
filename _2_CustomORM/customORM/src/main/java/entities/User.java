@@ -1,29 +1,34 @@
 package entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import orm.annotations.Entity;
+import orm.annotations.MyId;
+import orm.annotations.MyColumn;
+import orm.annotations.MyEntity;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
 
-@Entity(name = "users")
+@MyEntity(name = "users")
 public class User {
 
-    private long id;
+    @MyId
+    private Long id;
 
+    @MyColumn(name = "name")
     private String username;
 
+    @MyColumn(name = "age")
     private int age;
 
-    private LocalDate localDate;
+    @MyColumn(name = "registration_date")
+    private LocalDate registrationDate;
 
-    public User(String username, int age, LocalDate localDate) {
+    public User(String username, int age, LocalDate registrationDate) {
         this.username = username;
         this.age = age;
-        this.localDate = localDate;
+        this.registrationDate = registrationDate;
     }
 }
