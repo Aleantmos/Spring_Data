@@ -17,7 +17,7 @@ public class User {
     @MyId
     private Long id;
 
-    @MyColumn(name = "name")
+    @MyColumn(name = "username")
     private String username;
 
     @MyColumn(name = "age")
