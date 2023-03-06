@@ -13,35 +13,49 @@ import java.util.stream.Collectors;
 
 public class Persist<E> {
 
-    private static final String ID_COLUMN_MISSING_MESSAGE = "No id column present.";
+    private static final String USERNAME_COLUMN_MISSING_MESSAGE = "No username column present.";
     private static final String ENTITY_ANNOTATION_EXCEPTION = "Provided class does not have Entity annotation.";
     private static final String COLUMN_ANNOTATION_EXCEPTION = "Provided class does not have Column annotation.";
     
     private static final String INSERT_QUERY_FORMAT = "insert into %s (%s) values (%s)";
-    
+    private static final String UPDATE_QUERY_FORMAT = "update %s e set %s where e.username = %s";
+    private static final String UPDATE_VALUE_FORMAT = "%s = %s";
 
+    //Todo - check Bankov and redo
     public String doPersist(E entity) throws IllegalAccessException {
-        final Field idColumn = getIdColumn(entity.getClass());
 
+        final Field idColumn = getIdColumn(entity.getClass());
         idColumn.setAccessible(true);
 
-        final Object idValue = idColumn.get(entity);
+        final Field usernameColumn = getUsernameColumn(entity.getClass());
+        usernameColumn.setAccessible(true);
 
-        if (idValue == null) {
+        final Object usernameValue = usernameColumn.get(entity);
+
+        if (usernameValue == null) {
             return doInsert(entity);
         }
-
-
-        return doUpdate(entity, idColumn);
+        return doUpdate(entity, usernameColumn);
     }
 
-    private String doUpdate(E entity, Field idColumn) {
-        return "testing";
+    private String doUpdate(E entity, Field usernameColumn) throws IllegalAccessException {
+        final String tableName = getTableName(entity.getClass());
+        usernameColumn.setAccessible(true);
+
+        final List<KeyValuePairs> keyValuePairs = getKeyValuePairs(entity);
+
+        final String updateValues = keyValuePairs.stream()
+                .map(keyValuePair -> String.format(UPDATE_VALUE_FORMAT, keyValuePair.key(), keyValuePair.value()))
+                .collect(Collectors.joining(","));
+
+        final String usernameValue = usernameColumn.get(entity).toString();
+
+        return String.format(UPDATE_QUERY_FORMAT, tableName, updateValues, usernameValue);
     }
 
     private String doInsert(E entity) {
 
-        String tableName = getTableName(entity);
+        String tableName = getTableName((Class<?>) entity);
 
         final List<KeyValuePairs> keyValuePairs = getKeyValuePairs(entity);
 
@@ -91,7 +105,8 @@ public class Persist<E> {
                 : Objects.requireNonNull(o).toString();
     }
 
-    private String getValuesOfFieldsWithoutId(E entity) throws IllegalAccessException {
+
+    /*private String getValuesOfFieldsWithoutId(E entity) throws IllegalAccessException {
 
         Field[] declaredFields = entity.getClass().getDeclaredFields();
 
@@ -117,10 +132,9 @@ public class Persist<E> {
                 .map(field -> field.getAnnotation(MyColumn.class).name())
                 .collect(Collectors.joining(","));
 
-    }
-
-    private String getTableName(E entity) {
-        MyEntity entityTableAnnotation = entity.getClass().getAnnotation(MyEntity.class);
+    }*/
+    private String getTableName(Class<?> entity) {
+        MyEntity entityTableAnnotation = entity.getAnnotation(MyEntity.class);
 
         if (entityTableAnnotation == null) {
             throw new ORMException(ENTITY_ANNOTATION_EXCEPTION);
@@ -134,7 +148,15 @@ public class Persist<E> {
         return Arrays.stream(aClass.getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(MyId.class))
                 .findFirst()
-                .orElseThrow(() -> new ORMException(ID_COLUMN_MISSING_MESSAGE));
+                .orElseThrow(() -> new ORMException(USERNAME_COLUMN_MISSING_MESSAGE));
     }
 
+
+    private Field getUsernameColumn(Class<?> aClass) {
+        return Arrays.stream(aClass.getDeclaredFields())
+                .filter(field -> field.isAnnotationPresent(MyColumn.class))
+                .filter(field -> field.getName().equals("username"))
+                .findFirst()
+                .orElseThrow(() -> new ORMException(USERNAME_COLUMN_MISSING_MESSAGE));
+    }
 }

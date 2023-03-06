@@ -17,17 +17,15 @@ public class Main {
         EntityManager<User> userManager = new EntityManager<>(connection);
 
 
-        //User user1 = new User("George", 14, LocalDate.now());
-        //User user2 = new User("Ivan", 28, LocalDate.now());
+        User user1 = new User("George", 14, LocalDate.now());
+        userManager.persist(user1);
 
-        //userManager.persist(user1);
-        //userManager.persist(user2);
+        user1.setAge(20);
+        userManager.persist(user1);
 
-        User user3 = new User("George", 31, LocalDate.now());
+        /*User user2 = new User("Ivan", 28, LocalDate.now());
+        userManager.persist(user2);*/
 
-        userManager.persist(user3);
 
-        userManager.persist(user3);
-//        userManager.update(user3);
     }
 }
