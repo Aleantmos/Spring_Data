@@ -8,7 +8,10 @@ import softuni.bookshop.repository.CategoryRepository;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,5 +39,28 @@ public class CategoryService {
                         categoryRepository.save(category);
                     });
         }
+    }
+
+    public Set<Category> getRandomCategories() {
+
+        Set<Category> categories = new HashSet<>();
+
+        int randomInt = ThreadLocalRandom.current().nextInt(1, 3);
+
+        for (int i = 0; i < randomInt; i++) {
+
+            long categoryRepoCount = categoryRepository.count();
+
+            long randomId = ThreadLocalRandom
+                    .current()
+                    .nextLong(1, categoryRepoCount + 1);
+
+
+            Category category = categoryRepository.findById(randomId).orElse(null);
+
+            categories.add(category);
+        }
+
+        return categories;
     }
 }

@@ -46,71 +46,80 @@ public class Book extends BaseEntity {
         return title;
     }
 
-    public void setTitle(String title) {
+    public Book setTitle(String title) {
         this.title = title;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Book setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public EditionType getEditionType() {
         return editionType;
     }
 
-    public void setEditionType(EditionType editionType) {
+    public Book setEditionType(EditionType editionType) {
         this.editionType = editionType;
+        return this;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public Book setPrice(BigDecimal price) {
         this.price = price;
+        return this;
     }
 
     public Long getCopies() {
         return copies;
     }
 
-    public void setCopies(Long copies) {
+    public Book setCopies(Long copies) {
         this.copies = copies;
+        return this;
     }
 
     public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
+    public Book setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
+        return this;
     }
 
     public AgeRestriction getAgeRestriction() {
         return ageRestriction;
     }
 
-    public void setAgeRestriction(AgeRestriction ageRestriction) {
+    public Book setAgeRestriction(AgeRestriction ageRestriction) {
         this.ageRestriction = ageRestriction;
+        return this;
     }
 
     public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public Book setAuthor(Author author) {
         this.author = author;
+        return this;
     }
 
     public Set<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Category> categories) {
+    public Book setCategories(Set<Category> categories) {
         this.categories = categories;
+        return this;
     }
 }

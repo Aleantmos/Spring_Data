@@ -1,8 +1,8 @@
 package softuni.bookshop.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "authors")
@@ -11,6 +11,9 @@ public class Author extends BaseEntity {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private Set<Book> books;
 
     public Author() {
     }
@@ -29,5 +32,14 @@ public class Author extends BaseEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public Author setBooks(Set<Book> books) {
+        this.books = books;
+        return this;
     }
 }
