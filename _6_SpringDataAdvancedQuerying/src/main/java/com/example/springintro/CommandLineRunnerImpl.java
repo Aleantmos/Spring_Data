@@ -46,8 +46,42 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         //booksReleasedBeforeDate();
 
-        findAuthorsByNameEnding();
+        //findAuthorsByNameEnding();
 
+        //findBooksByNameContaining();
+
+        findBooksOfAuthorsWithLastNameContaining();
+
+    }
+
+    private void findBooksOfAuthorsWithLastNameContaining() {
+
+        String elementContained = scanner.nextLine();
+
+        List<Author> authors = authorService.authorsLastNameStartsWith(elementContained);
+
+        String collected = authors.stream()
+                .map(author -> author.getBooks()
+                        .stream()
+                        .map(book -> String.format("%s (%s)", book.getTitle(), author.getLastName()))
+                        .collect(Collectors.joining(System.lineSeparator())))
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        System.out.println(collected);
+
+    }
+
+    private void findBooksByNameContaining() {
+
+        String partContained = scanner.nextLine();
+
+        List<Book> booksContaining = bookService.findBooksContaining(partContained);
+
+        String collected = booksContaining.stream()
+                .map(book -> String.format("%s", book.getTitle()))
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        System.out.println(collected);
     }
 
     private void findAuthorsByNameEnding() {

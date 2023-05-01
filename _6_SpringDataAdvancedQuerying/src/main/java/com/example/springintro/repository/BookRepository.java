@@ -31,4 +31,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findAllByReleaseDateNot(LocalDate givenYear);
 
     List<Book> findAllByReleaseDateBefore(LocalDate givenYear);
+
+    List<Book> findAllByTitleContaining(String contained);
 }

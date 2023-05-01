@@ -118,4 +118,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> findBooksReleasedBefore(LocalDate formatted) {
         return bookRepository.findAllByReleaseDateBefore(formatted);
     }
+
+    @Override
+    public List<Book> findBooksContaining(String partContained) {
+        return bookRepository.findAllByTitleContaining(partContained);
+    }
 }

@@ -67,4 +67,9 @@ public class AuthorServiceImpl implements AuthorService {
 
         return authorRepository.findByFirstNameEndingWith(ending);
     }
+
+    @Override
+    public List<Author> authorsLastNameStartsWith(String elementContained) {
+        return authorRepository.findByLastNameStartingWith(elementContained);
+    }
 }

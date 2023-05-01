@@ -13,4 +13,6 @@ public interface AuthorService {
     List<String> getAllAuthorsOrderByCountOfTheirBooks();
 
     List<Author> findAuthorByNameEndingWith(String ending);
+
+    List<Author> authorsLastNameStartsWith(String elementContained);
 }
