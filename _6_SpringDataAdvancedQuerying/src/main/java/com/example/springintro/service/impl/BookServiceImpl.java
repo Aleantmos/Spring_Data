@@ -123,4 +123,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> findBooksContaining(String partContained) {
         return bookRepository.findAllByTitleContaining(partContained);
     }
+
+    @Override
+    public Long findBooksWithTitleLonger(Integer length) {
+        return bookRepository.findBooksByTitleLengthLongerThan(length);
+    }
 }

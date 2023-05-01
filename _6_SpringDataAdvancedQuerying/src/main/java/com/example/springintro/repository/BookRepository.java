@@ -4,6 +4,7 @@ import com.example.springintro.model.entity.Book;
 import com.example.springintro.model.enums.AgeRestriction;
 import com.example.springintro.model.enums.EditionType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -33,4 +34,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findAllByReleaseDateBefore(LocalDate givenYear);
 
     List<Book> findAllByTitleContaining(String contained);
+
+    @Query("select count(b) from Book as b where length(b.title) > :length")
+    Long findBooksByTitleLengthLongerThan(Integer length);
 }

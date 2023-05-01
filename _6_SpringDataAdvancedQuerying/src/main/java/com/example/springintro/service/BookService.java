@@ -29,4 +29,6 @@ public interface BookService {
     List<Book> findBooksReleasedBefore(LocalDate formatted);
 
     List<Book> findBooksContaining(String partContained);
+
+    Long findBooksWithTitleLonger(Integer length);
 }

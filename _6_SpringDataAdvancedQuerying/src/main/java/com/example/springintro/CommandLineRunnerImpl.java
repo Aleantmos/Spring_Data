@@ -50,7 +50,18 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         //findBooksByNameContaining();
 
-        findBooksOfAuthorsWithLastNameContaining();
+        //findBooksOfAuthorsWithLastNameContaining();
+
+        findCountOfBooksWhoseTitleIsLongerThan();
+
+    }
+
+    private void findCountOfBooksWhoseTitleIsLongerThan() {
+        Integer length = Integer.parseInt(scanner.nextLine());
+
+        Long cnt = bookService.findBooksWithTitleLonger(length);
+
+        System.out.printf("There are %d books with longer title than %d symbols.", cnt, length );
 
     }
 
