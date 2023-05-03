@@ -1,5 +1,6 @@
 package com.example.springintro.repository;
 
+import com.example.springintro.model.dto.BookInformation;
 import com.example.springintro.model.entity.Book;
 import com.example.springintro.model.enums.AgeRestriction;
 import com.example.springintro.model.enums.EditionType;
@@ -37,4 +38,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("select count(b) from Book as b where length(b.title) > :length")
     Long findBooksByTitleLengthLongerThan(Integer length);
+
+
+    @Query("select new com.example.springintro.model.dto.BookInformation(b.title, b.editionType, b.ageRestriction, b.price)" +
+            " from Book b where b.title = :title")
+    BookInformation findFirstByTitle(String title);
+
 }

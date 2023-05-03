@@ -1,5 +1,6 @@
 package com.example.springintro;
 
+import com.example.springintro.model.dto.BookInformation;
 import com.example.springintro.model.entity.Author;
 import com.example.springintro.model.entity.Book;
 import com.example.springintro.model.enums.AgeRestriction;
@@ -11,7 +12,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -52,9 +52,21 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         //findBooksOfAuthorsWithLastNameContaining();
 
-        findCountOfBooksWhoseTitleIsLongerThan();
+        //findCountOfBooksWhoseTitleIsLongerThan();
+
+        //findTotalBookCopiesForAllAuthors();
+
+        findFirstBookByTitle();
 
     }
+
+    private void findFirstBookByTitle() {
+        String title = scanner.nextLine();
+        BookInformation firstByTitle = bookService.findFirstByTitle(title);
+        System.out.println(firstByTitle.toString());
+    }
+
+
 
     private void findCountOfBooksWhoseTitleIsLongerThan() {
         Integer length = Integer.parseInt(scanner.nextLine());

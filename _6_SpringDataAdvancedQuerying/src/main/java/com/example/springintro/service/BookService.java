@@ -1,5 +1,6 @@
 package com.example.springintro.service;
 
+import com.example.springintro.model.dto.BookInformation;
 import com.example.springintro.model.entity.Book;
 import com.example.springintro.model.enums.AgeRestriction;
 import com.example.springintro.model.enums.EditionType;
@@ -31,4 +32,6 @@ public interface BookService {
     List<Book> findBooksContaining(String partContained);
 
     Long findBooksWithTitleLonger(Integer length);
+
+    BookInformation findFirstByTitle(String title);
 }

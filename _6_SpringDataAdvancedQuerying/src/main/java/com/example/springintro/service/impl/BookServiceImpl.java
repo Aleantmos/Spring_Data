@@ -1,5 +1,6 @@
 package com.example.springintro.service.impl;
 
+import com.example.springintro.model.dto.BookInformation;
 import com.example.springintro.model.entity.*;
 import com.example.springintro.model.enums.AgeRestriction;
 import com.example.springintro.model.enums.EditionType;
@@ -128,4 +129,11 @@ public class BookServiceImpl implements BookService {
     public Long findBooksWithTitleLonger(Integer length) {
         return bookRepository.findBooksByTitleLengthLongerThan(length);
     }
+
+    @Override
+    public BookInformation findFirstByTitle(String title) {
+        return bookRepository.findFirstByTitle(title);
+    }
+
+
 }
