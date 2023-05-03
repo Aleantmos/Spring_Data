@@ -34,4 +34,6 @@ public interface BookService {
     Long findBooksWithTitleLonger(Integer length);
 
     BookInformation findFirstByTitle(String title);
+
+    int increaseBookCopies(LocalDate date, int copies);
 }

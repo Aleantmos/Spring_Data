@@ -12,7 +12,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -56,7 +59,22 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         //findTotalBookCopiesForAllAuthors();
 
-        findFirstBookByTitle();
+        //findFirstBookByTitle();
+
+        increaseBookCopiesOfBooksReleasedAfter();
+
+    }
+
+    private void increaseBookCopiesOfBooksReleasedAfter() {
+        final String date = scanner.nextLine().replaceAll(" ", "-");
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+        LocalDate released = LocalDate.parse(date, dateTimeFormatter);
+
+        final int copies = scanner.nextInt();
+
+        int bookCopies = bookService.increaseBookCopies(released, copies);
+        System.out.println(bookCopies);
 
     }
 

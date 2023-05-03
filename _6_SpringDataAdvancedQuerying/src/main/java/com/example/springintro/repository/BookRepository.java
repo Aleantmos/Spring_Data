@@ -5,12 +5,13 @@ import com.example.springintro.model.entity.Book;
 import com.example.springintro.model.enums.AgeRestriction;
 import com.example.springintro.model.enums.EditionType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -40,8 +41,13 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Long findBooksByTitleLengthLongerThan(Integer length);
 
 
-    @Query("select new com.example.springintro.model.dto.BookInformation(b.title, b.editionType, b.ageRestriction, b.price)" +
-            " from Book b where b.title = :title")
+    @Query("select new com.example.springintro.model.dto.BookInformation" +
+            "(b.title, b.editionType, b.ageRestriction, b.price) " +
+            "from Book b where b.title = :title")
     BookInformation findFirstByTitle(String title);
 
+    @Modifying
+    @Transactional
+    @Query("update Book b set b.copies = b.copies + :copies where b.releaseDate > :date")
+    int increaseBookCopies(int copies, LocalDate date);
 }

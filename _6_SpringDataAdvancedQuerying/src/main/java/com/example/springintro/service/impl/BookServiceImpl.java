@@ -135,5 +135,10 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findFirstByTitle(title);
     }
 
+    @Override
+    public int increaseBookCopies(LocalDate date, int copies) {
+        return bookRepository.increaseBookCopies(copies, date);
+    }
+
 
 }
