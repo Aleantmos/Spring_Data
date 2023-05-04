@@ -61,20 +61,19 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         //findFirstBookByTitle();
 
-        increaseBookCopiesOfBooksReleasedAfter();
+        //increaseBookCopiesOfBooksReleasedAfter() -> notFinished;
 
+        removeBooksWithCopiesLowerThan();
+    }
+
+    private void removeBooksWithCopiesLowerThan() {
+        final int copies = scanner.nextInt();
+
+        System.out.println(bookService.deleteAllByCopiesLessThan(copies));
     }
 
     private void increaseBookCopiesOfBooksReleasedAfter() {
-        final String date = scanner.nextLine().replaceAll(" ", "-");
-
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
-        LocalDate released = LocalDate.parse(date, dateTimeFormatter);
-
-        final int copies = scanner.nextInt();
-
-        int bookCopies = bookService.increaseBookCopies(released, copies);
-        System.out.println(bookCopies);
+        // todo
 
     }
 

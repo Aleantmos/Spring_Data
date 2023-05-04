@@ -36,4 +36,7 @@ public interface BookService {
     BookInformation findFirstByTitle(String title);
 
     int increaseBookCopies(LocalDate date, int copies);
+
+    int deleteAllByCopiesLessThan(Integer copies);
+
 }

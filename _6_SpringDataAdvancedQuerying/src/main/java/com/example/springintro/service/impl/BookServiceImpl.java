@@ -140,5 +140,10 @@ public class BookServiceImpl implements BookService {
         return bookRepository.increaseBookCopies(copies, date);
     }
 
+    @Override
+    public int deleteAllByCopiesLessThan(Integer copies) {
+        return bookRepository.deleteAllByCopiesLessThan(copies);
+    }
+
 
 }
