@@ -10,5 +10,10 @@ public enum Validations {
     public static final String CONFIRM_PASSWORD_DIFFERENT_MESSAGE = "Passwords are not matching.";
     public static final String COMMAND_NOT_FOUND_MESSAGE = "Command not found.";
     public static final String SUCCESSFUL_REGISTER_MESSAGE = " was registered.";
+    public static final String EMAIL_EXISTS_MESSAGE = "Email already exists.";
+    public static final String LOGIN_SUCCESSFUL_MESSAGE = "Successfully logged in ";
+
+    public final static String LOGOUT_ERROR_MESSAGE = "Cannot log out. No user was logged in.";
+    public final static String SUCCESSFUL_LOGOUT_MESSAGE = "User %s successfully logged out.";
 
 }

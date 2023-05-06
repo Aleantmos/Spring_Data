@@ -1,5 +1,6 @@
 package com.gamestory.service.user;
 
+import com.gamestory.domain.dto.UserLoginDTO;
 import com.gamestory.domain.dto.UserRegisterDTO;
 import com.gamestory.domain.entity.User;
 import com.gamestory.repository.UserRepository;
@@ -7,9 +8,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+import static com.gamestory.constants.Validations.*;
+
 @Service
 public class UserServiceImpl implements UserService {
 
+    private User user;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper = new ModelMapper();
 
@@ -32,8 +38,45 @@ public class UserServiceImpl implements UserService {
             user.setAdmin(true);
         }
 
+        boolean isUserFound = userRepository.findByEmail(userRegisterDTO.getEmail()).isPresent();
+
+        if (isUserFound) {
+            throw new IllegalArgumentException(EMAIL_EXISTS_MESSAGE);
+        }
+
         this.userRepository.save(user);
 
         return userRegisterDTO.successfulRegisterFormat();
+    }
+
+    @Override
+    public String loginUser(String[] args) {
+        final String email = args[1];
+        final String password = args[2];
+
+        final UserLoginDTO userLogin = new UserLoginDTO(email, password);
+
+        Optional<User> user = userRepository.findByEmail(userLogin.getEmail());
+
+        if (user.isPresent() && this.user == null && user.get().getPassword().equals(userLogin.getPassword())) {
+            this.user = user.get();
+            return LOGIN_SUCCESSFUL_MESSAGE + this.user.getFullName() ;
+        }
+
+        return PASSWORD_OR_USERNAME_NOT_FOUND_MESSAGE;
+    }
+
+    @Override
+    public String logout() {
+
+        if (this.user == null) {
+            return LOGOUT_ERROR_MESSAGE;
+        }
+
+        String output = String.format(SUCCESSFUL_LOGOUT_MESSAGE, user.getFullName());
+
+        this.user = null;
+
+        return output;
     }
 }

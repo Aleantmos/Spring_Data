@@ -12,7 +12,7 @@ public class User extends BaseEntity {
     private String email;
     @Column(nullable = false)
     private String password;
-    @Column(name = "full_name", nullable = false)
+    @Column(name = "full_name", nullable = false, unique = true)
     private String fullName;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Game> games;

@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-import static com.gamestory.constants.Commands.LOGIN_USER;
-import static com.gamestory.constants.Commands.REGISTER_USER;
+import static com.gamestory.constants.Commands.*;
 import static com.gamestory.constants.Validations.COMMAND_NOT_FOUND_MESSAGE;
 
 @Component
@@ -29,7 +28,8 @@ public class ConsoleRunner implements CommandLineRunner {
 
             output = switch (command) {
                 case REGISTER_USER -> userService.registerUser(input);
-                //case LOGIN_USER -> userService.loginUser(input);
+                case LOGIN_USER -> userService.loginUser(input);
+                case LOGOUT_USER -> userService.logout();
                 default -> COMMAND_NOT_FOUND_MESSAGE;
             };
         }
