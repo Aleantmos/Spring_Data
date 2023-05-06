@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GamesRepository extends JpaRepository<Game, Long> {
+
+    Game findFirstByTitle(String title);
 }

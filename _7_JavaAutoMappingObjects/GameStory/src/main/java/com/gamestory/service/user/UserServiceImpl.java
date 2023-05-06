@@ -15,7 +15,7 @@ import static com.gamestory.constants.Validations.*;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private User user;
+    private User loggedUser;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper = new ModelMapper();
 
@@ -58,9 +58,9 @@ public class UserServiceImpl implements UserService {
 
         Optional<User> user = userRepository.findByEmail(userLogin.getEmail());
 
-        if (user.isPresent() && this.user == null && user.get().getPassword().equals(userLogin.getPassword())) {
-            this.user = user.get();
-            return LOGIN_SUCCESSFUL_MESSAGE + this.user.getFullName() ;
+        if (user.isPresent() && this.loggedUser == null && user.get().getPassword().equals(userLogin.getPassword())) {
+            this.loggedUser = user.get();
+            return LOGIN_SUCCESSFUL_MESSAGE + this.loggedUser.getFullName() ;
         }
 
         return PASSWORD_OR_USERNAME_NOT_FOUND_MESSAGE;
@@ -69,14 +69,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public String logout() {
 
-        if (this.user == null) {
+        if (this.loggedUser == null) {
             return LOGOUT_ERROR_MESSAGE;
         }
 
-        String output = String.format(SUCCESSFUL_LOGOUT_MESSAGE, user.getFullName());
+        String output = String.format(SUCCESSFUL_LOGOUT_MESSAGE, loggedUser.getFullName());
 
-        this.user = null;
+        this.loggedUser = null;
 
         return output;
     }
+
+    @Override
+    public User getLoggedUser() {
+        return this.loggedUser;
+    }
+
+
 }

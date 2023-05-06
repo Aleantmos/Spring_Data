@@ -1,5 +1,6 @@
 package com.gamestory;
 
+import com.gamestory.service.game.GameService;
 import com.gamestory.service.user.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,9 +15,11 @@ public class ConsoleRunner implements CommandLineRunner {
 
     private static final Scanner scanner = new Scanner(System.in);
     private final UserService userService;
+    private final GameService gameService;
 
-    public ConsoleRunner(UserService userService) {
+    public ConsoleRunner(UserService userService, GameService gameService) {
         this.userService = userService;
+        this.gameService = gameService;
     }
 
     @Override
@@ -30,6 +33,7 @@ public class ConsoleRunner implements CommandLineRunner {
                 case REGISTER_USER -> userService.registerUser(input);
                 case LOGIN_USER -> userService.loginUser(input);
                 case LOGOUT_USER -> userService.logout();
+                case ADD_GAME -> gameService.addGame(input);
                 default -> COMMAND_NOT_FOUND_MESSAGE;
             };
         }
