@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static com.jsonex.constants.Paths.PRODUCTS_WITHOUT_BUYERS_IN_RANGE_JSON_PATH;
 import static com.jsonex.constants.Utils.MODEL_MAPPER;
-import static com.jsonex.constants.Utils.writJsonIntoFile;
+import static com.jsonex.constants.Utils.writeJsonIntoFile;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService{
                 .map(ProductDto::toProductInRangeWithoutBuyerDto)
                 .collect(Collectors.toList());
 
-        writJsonIntoFile(products, PRODUCTS_WITHOUT_BUYERS_IN_RANGE_JSON_PATH);
+        writeJsonIntoFile(products, PRODUCTS_WITHOUT_BUYERS_IN_RANGE_JSON_PATH);
 
         return products;
     }

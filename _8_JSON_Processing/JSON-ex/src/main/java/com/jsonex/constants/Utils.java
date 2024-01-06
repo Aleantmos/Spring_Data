@@ -12,8 +12,8 @@ import java.util.List;
 public enum Utils {
     ;
     public static final ModelMapper MODEL_MAPPER = new ModelMapper();
-    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    public static void writJsonIntoFile(List<?> objects, Path filePath) throws IOException {
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+    public static void writeJsonIntoFile(List<?> objects, Path filePath) throws IOException {
         final FileWriter fileWriter = new FileWriter(filePath.toFile());
 
         GSON.toJson(objects, fileWriter);

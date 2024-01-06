@@ -4,14 +4,20 @@
     "lastName": "Snyder",
     "boughtProducts": [
       {
+        "name": "Meloxicam",
+        "price": 809.18,
+        "buyerFirstName": "Thomas",
+        "buyerLastName": "Snyder"
+      },
+      {
         "name": "Butalbital, Aspirin and Caffeine",
         "price": 1010.98,
         "buyerFirstName": "Thomas",
         "buyerLastName": "Snyder"
       },
       {
-        "name": "Glipizide and Metformin Hydrochloride",
-        "price": 953.60,
+        "name": "Retin-A MICRO",
+        "price": 995.98,
         "buyerFirstName": "Thomas",
         "buyerLastName": "Snyder"
       },
@@ -22,14 +28,8 @@
         "buyerLastName": "Snyder"
       },
       {
-        "name": "Meloxicam",
-        "price": 809.18,
-        "buyerFirstName": "Thomas",
-        "buyerLastName": "Snyder"
-      },
-      {
-        "name": "Retin-A MICRO",
-        "price": 995.98,
+        "name": "Glipizide and Metformin Hydrochloride",
+        "price": 953.60,
         "buyerFirstName": "Thomas",
         "buyerLastName": "Snyder"
       }
@@ -81,13 +81,13 @@
     "lastName": "Schmidt",
     "boughtProducts": [
       {
-        "name": "LV-FX",
-        "price": 820.87,
+        "name": "Cefadroxil",
+        "price": 1302.20,
         "buyerLastName": "Schmidt"
       },
       {
-        "name": "Cefadroxil",
-        "price": 1302.20,
+        "name": "LV-FX",
+        "price": 820.87,
         "buyerLastName": "Schmidt"
       },
       {
@@ -129,6 +129,11 @@
         "buyerLastName": "Mitchell"
       },
       {
+        "name": "Aspergillus repens",
+        "price": 1231.42,
+        "buyerLastName": "Mitchell"
+      },
+      {
         "name": "smart sense nighttime cold and flu relief",
         "price": 1101.77,
         "buyerLastName": "Mitchell"
@@ -136,11 +141,6 @@
       {
         "name": "smart sense nicotine",
         "price": 1444.12,
-        "buyerLastName": "Mitchell"
-      },
-      {
-        "name": "Aspergillus repens",
-        "price": 1231.42,
         "buyerLastName": "Mitchell"
       }
     ]
@@ -155,14 +155,14 @@
     "lastName": "Harris",
     "boughtProducts": [
       {
-        "name": "IOPE RETIGEN MOISTURE TWIN CAKE NO.21",
-        "price": 1257.71,
+        "name": "Budpak Hemorrhoid Anesthetic",
+        "price": 1499.29,
         "buyerFirstName": "Nicole",
         "buyerLastName": "Harris"
       },
       {
-        "name": "Budpak Hemorrhoid Anesthetic",
-        "price": 1499.29,
+        "name": "Megestrol Acetate",
+        "price": 976.15,
         "buyerFirstName": "Nicole",
         "buyerLastName": "Harris"
       },
@@ -173,8 +173,8 @@
         "buyerLastName": "Harris"
       },
       {
-        "name": "Megestrol Acetate",
-        "price": 976.15,
+        "name": "IOPE RETIGEN MOISTURE TWIN CAKE NO.21",
+        "price": 1257.71,
         "buyerFirstName": "Nicole",
         "buyerLastName": "Harris"
       }
@@ -185,14 +185,14 @@
     "lastName": "Howell",
     "boughtProducts": [
       {
-        "name": "SUMATRIPTAN SUCCINATE",
-        "price": 1265.94,
+        "name": "cough and sore throat",
+        "price": 1482.68,
         "buyerFirstName": "Brenda",
         "buyerLastName": "Howell"
       },
       {
-        "name": "cough and sore throat",
-        "price": 1482.68,
+        "name": "SUMATRIPTAN SUCCINATE",
+        "price": 1265.94,
         "buyerFirstName": "Brenda",
         "buyerLastName": "Howell"
       },
@@ -209,12 +209,6 @@
     "lastName": "Fuller",
     "boughtProducts": [
       {
-        "name": "ESIKA 3-IN-1 PRO MAKE UP FOUNDATION SPF 20 BASE DE MAQUILLAJE PARA ROSTRO 3-EN-1 PRO FPS 20",
-        "price": 1097.60,
-        "buyerFirstName": "Patricia",
-        "buyerLastName": "Fuller"
-      },
-      {
         "name": "Smooth texture Orange flavor",
         "price": 976.65,
         "buyerFirstName": "Patricia",
@@ -225,6 +219,12 @@
         "price": 969.86,
         "buyerFirstName": "Patricia",
         "buyerLastName": "Fuller"
+      },
+      {
+        "name": "ESIKA 3-IN-1 PRO MAKE UP FOUNDATION SPF 20 BASE DE MAQUILLAJE PARA ROSTRO 3-EN-1 PRO FPS 20",
+        "price": 1097.60,
+        "buyerFirstName": "Patricia",
+        "buyerLastName": "Fuller"
       }
     ]
   },
@@ -232,12 +232,6 @@
     "firstName": "Doris",
     "lastName": "Cook",
     "boughtProducts": [
-      {
-        "name": "Pollens - Trees, Birch Mix",
-        "price": 1153.54,
-        "buyerFirstName": "Doris",
-        "buyerLastName": "Cook"
-      },
       {
         "name": "Warfarin Sodium",
         "price": 1379.79,
@@ -247,6 +241,12 @@
       {
         "name": "Metformin Hydrochloride",
         "price": 953.99,
+        "buyerFirstName": "Doris",
+        "buyerLastName": "Cook"
+      },
+      {
+        "name": "Pollens - Trees, Birch Mix",
+        "price": 1153.54,
         "buyerFirstName": "Doris",
         "buyerLastName": "Cook"
       },
@@ -342,14 +342,14 @@
     "lastName": "Henry",
     "boughtProducts": [
       {
-        "name": "Acid Reducer",
-        "price": 1443.51,
+        "name": "Lorazepam",
+        "price": 1134.96,
         "buyerFirstName": "Jean",
         "buyerLastName": "Henry"
       },
       {
-        "name": "Lorazepam",
-        "price": 1134.96,
+        "name": "Acid Reducer",
+        "price": 1443.51,
         "buyerFirstName": "Jean",
         "buyerLastName": "Henry"
       },
@@ -372,14 +372,14 @@
         "buyerLastName": "Johnson"
       },
       {
-        "name": "PCA SKIN ACNE",
-        "price": 1356.22,
+        "name": "Fair Foundation SPF 15",
+        "price": 1394.24,
         "buyerFirstName": "Rachel",
         "buyerLastName": "Johnson"
       },
       {
-        "name": "Fair Foundation SPF 15",
-        "price": 1394.24,
+        "name": "PCA SKIN ACNE",
+        "price": 1356.22,
         "buyerFirstName": "Rachel",
         "buyerLastName": "Johnson"
       }
@@ -417,11 +417,6 @@
     "lastName": "Moreno",
     "boughtProducts": [
       {
-        "name": "MEDICATED DANDRUFF",
-        "price": 1351.02,
-        "buyerLastName": "Moreno"
-      },
-      {
         "name": "GOONG SECRET CALMING BATH",
         "price": 742.47,
         "buyerLastName": "Moreno"
@@ -429,6 +424,11 @@
       {
         "name": "Laser Block 100",
         "price": 1135.43,
+        "buyerLastName": "Moreno"
+      },
+      {
+        "name": "MEDICATED DANDRUFF",
+        "price": 1351.02,
         "buyerLastName": "Moreno"
       }
     ]
@@ -438,14 +438,14 @@
     "lastName": "Stevens",
     "boughtProducts": [
       {
-        "name": "Metoprolol Tartrate",
-        "price": 1405.74,
+        "name": "Isosorbide Mononitrate",
+        "price": 789.91,
         "buyerFirstName": "Ann",
         "buyerLastName": "Stevens"
       },
       {
-        "name": "Isosorbide Mononitrate",
-        "price": 789.91,
+        "name": "Metoprolol Tartrate",
+        "price": 1405.74,
         "buyerFirstName": "Ann",
         "buyerLastName": "Stevens"
       },
@@ -462,26 +462,26 @@
     "lastName": "Henry",
     "boughtProducts": [
       {
-        "name": "Moore Medical Sinus Pain and Pressure Relief",
-        "price": 855.39,
-        "buyerFirstName": "Benjamin",
-        "buyerLastName": "Henry"
-      },
-      {
         "name": "EPZICOM",
         "price": 895.65,
         "buyerFirstName": "Benjamin",
         "buyerLastName": "Henry"
       },
       {
-        "name": "Triamterene and Hydrochlorothiazide",
-        "price": 1416.59,
+        "name": "Homeopathic Rheumatism",
+        "price": 967.08,
         "buyerFirstName": "Benjamin",
         "buyerLastName": "Henry"
       },
       {
-        "name": "Homeopathic Rheumatism",
-        "price": 967.08,
+        "name": "Moore Medical Sinus Pain and Pressure Relief",
+        "price": 855.39,
+        "buyerFirstName": "Benjamin",
+        "buyerLastName": "Henry"
+      },
+      {
+        "name": "Triamterene and Hydrochlorothiazide",
+        "price": 1416.59,
         "buyerFirstName": "Benjamin",
         "buyerLastName": "Henry"
       }
@@ -492,14 +492,14 @@
     "lastName": "Williamson",
     "boughtProducts": [
       {
-        "name": "XANTHIUM STRUMARIUM VAR CANADENSE POLLEN",
-        "price": 1091.38,
+        "name": "CALMING DIAPER RASH",
+        "price": 700.92,
         "buyerFirstName": "Marie",
         "buyerLastName": "Williamson"
       },
       {
-        "name": "CALMING DIAPER RASH",
-        "price": 700.92,
+        "name": "XANTHIUM STRUMARIUM VAR CANADENSE POLLEN",
+        "price": 1091.38,
         "buyerFirstName": "Marie",
         "buyerLastName": "Williamson"
       },
@@ -554,26 +554,26 @@
     "lastName": "Rodriguez",
     "boughtProducts": [
       {
-        "name": "Baza Antifungal",
-        "price": 1162.34,
-        "buyerFirstName": "Jonathan",
-        "buyerLastName": "Rodriguez"
-      },
-      {
         "name": "EMEND",
         "price": 1365.51,
         "buyerFirstName": "Jonathan",
         "buyerLastName": "Rodriguez"
       },
       {
-        "name": "up and up temporary minor arthritis pain relief",
-        "price": 1085.78,
+        "name": "Spironolactone",
+        "price": 933.69,
         "buyerFirstName": "Jonathan",
         "buyerLastName": "Rodriguez"
       },
       {
-        "name": "Spironolactone",
-        "price": 933.69,
+        "name": "Baza Antifungal",
+        "price": 1162.34,
+        "buyerFirstName": "Jonathan",
+        "buyerLastName": "Rodriguez"
+      },
+      {
+        "name": "up and up temporary minor arthritis pain relief",
+        "price": 1085.78,
         "buyerFirstName": "Jonathan",
         "buyerLastName": "Rodriguez"
       }
@@ -620,14 +620,14 @@
         "buyerLastName": "King"
       },
       {
-        "name": "Glycopyrrolate",
-        "price": 1471.43,
+        "name": "Prednisone",
+        "price": 1285.99,
         "buyerFirstName": "Patrick",
         "buyerLastName": "King"
       },
       {
-        "name": "Prednisone",
-        "price": 1285.99,
+        "name": "Glycopyrrolate",
+        "price": 1471.43,
         "buyerFirstName": "Patrick",
         "buyerLastName": "King"
       }
@@ -656,14 +656,14 @@
         "buyerLastName": "Alexander"
       },
       {
-        "name": "Archangelica Eucalyptus",
-        "price": 1334.91,
+        "name": "Warfarin Sodium",
+        "price": 770.05,
         "buyerFirstName": "Gloria",
         "buyerLastName": "Alexander"
       },
       {
-        "name": "Warfarin Sodium",
-        "price": 770.05,
+        "name": "Archangelica Eucalyptus",
+        "price": 1334.91,
         "buyerFirstName": "Gloria",
         "buyerLastName": "Alexander"
       }
@@ -708,12 +708,6 @@
     "lastName": "Patterson",
     "boughtProducts": [
       {
-        "name": "DIPYRIDAMOLE",
-        "price": 1150.67,
-        "buyerFirstName": "Christina",
-        "buyerLastName": "Patterson"
-      },
-      {
         "name": "Naproxen",
         "price": 807.22,
         "buyerFirstName": "Christina",
@@ -724,6 +718,12 @@
         "price": 885.86,
         "buyerFirstName": "Christina",
         "buyerLastName": "Patterson"
+      },
+      {
+        "name": "DIPYRIDAMOLE",
+        "price": 1150.67,
+        "buyerFirstName": "Christina",
+        "buyerLastName": "Patterson"
       }
     ]
   },
@@ -732,14 +732,14 @@
     "lastName": "Gilbert",
     "boughtProducts": [
       {
-        "name": "Americaine",
-        "price": 1165.75,
+        "name": "ESIKA",
+        "price": 879.37,
         "buyerFirstName": "Kathy",
         "buyerLastName": "Gilbert"
       },
       {
-        "name": "ESIKA",
-        "price": 879.37,
+        "name": "Americaine",
+        "price": 1165.75,
         "buyerFirstName": "Kathy",
         "buyerLastName": "Gilbert"
       },
@@ -771,14 +771,14 @@
     "lastName": "Riley",
     "boughtProducts": [
       {
-        "name": "PREMIER VALUE ALLERGY",
-        "price": 1127.61,
+        "name": "CVS Therapeutic Menthol Pain Reliever",
+        "price": 1033.42,
         "buyerFirstName": "Sandra",
         "buyerLastName": "Riley"
       },
       {
-        "name": "CVS Therapeutic Menthol Pain Reliever",
-        "price": 1033.42,
+        "name": "PREMIER VALUE ALLERGY",
+        "price": 1127.61,
         "buyerFirstName": "Sandra",
         "buyerLastName": "Riley"
       }

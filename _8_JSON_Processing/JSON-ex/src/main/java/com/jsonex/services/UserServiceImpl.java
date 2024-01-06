@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 import static com.jsonex.constants.Paths.USERS_WITH_SOLD_PRODUCTS_JSON_PATH;
 import static com.jsonex.constants.Utils.MODEL_MAPPER;
-import static com.jsonex.constants.Utils.writJsonIntoFile;
+import static com.jsonex.constants.Utils.writeJsonIntoFile;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
                 .map(user -> MODEL_MAPPER.map(user, UsersWithSoldProductsDto.class))
                 .collect(Collectors.toList());
 
-        writJsonIntoFile(usersWithSoldProducts, USERS_WITH_SOLD_PRODUCTS_JSON_PATH);
+        writeJsonIntoFile(usersWithSoldProducts, USERS_WITH_SOLD_PRODUCTS_JSON_PATH);
 
         return usersWithSoldProducts;
 
