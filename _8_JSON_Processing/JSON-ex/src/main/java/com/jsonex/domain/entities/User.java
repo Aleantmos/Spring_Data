@@ -28,7 +28,7 @@ public class User extends BaseEntity {
     @Fetch(FetchMode.JOIN)
     private Set<Product> sellingProducts;
     @OneToMany(targetEntity = Product.class, mappedBy = "buyer")
-    @Fetch(FetchMode.JOIN)
+    @Fetch(FetchMode.SELECT)
     private Set<Product> boughtProducts;
     @ManyToMany
     @Fetch(FetchMode.JOIN)

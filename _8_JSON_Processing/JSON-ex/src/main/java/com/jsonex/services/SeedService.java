@@ -9,7 +9,7 @@ public interface SeedService {
      void seedCategories() throws IOException;
      void seedProducts() throws IOException;
 
-     default void seedAll() throws FileNotFoundException {
+     default void seedAll() throws IOException {
          seedUsers();
          seedCategories();
          seedProducts();

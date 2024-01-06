@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.math.BigDecimal;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static com.jsonex.constants.Paths.*;
 import static com.jsonex.constants.Utils.GSON;
@@ -70,26 +70,51 @@ public class SeedServiceImpl implements SeedService {
         if (this.productRepository.count() == 0) {
             final FileReader fileReader = new FileReader(PRODUCTS_JSON_PATH.toFile());
 
-            Arrays.stream(GSON.fromJson(fileReader, ProductImportDto[].class))
-                            .map(product -> MODEL_MAPPER.map(product, Product.class))
-                                    .map(this::setRandomSeller)
-                                    .map(this::setRandomBuyer)
-                                    .map(this::setRandomCategories);
+            List<Product> products = Arrays.stream(GSON.fromJson(fileReader, ProductImportDto[].class))
+                    .map(product -> MODEL_MAPPER.map(product, Product.class))
+                    .map(this::setRandomSeller)
+                    .map(this::setRandomBuyer)
+                    .map(this::setRandomCategories)
+                    .collect(Collectors.toList());
+
+            this.productRepository.saveAllAndFlush(products);
+
             fileReader.close();
         }
     }
 
     private Product setRandomCategories(Product product) {
-        return null;
+        final Random random = new Random();
+
+        long high = this.categoryRepository.count();
+
+        int numberOfCategories = random.nextInt(0, (int) high);
+
+        Set<Category> categories = new HashSet<>();
+
+        IntStream.range(0, numberOfCategories)
+                .forEach(num -> {
+                    Category category = this.categoryRepository
+                            .getRandomEntity()
+                            .orElseThrow(NoSuchElementException::new);
+                    categories.add(category);
+                });
+
+        product.setCategories(categories);
+
+        return product;
     }
 
     private Product setRandomBuyer(Product product) {
-        User buyer = this.userRepository.getRandomEntity().orElseThrow(NoSuchElementException::new);
-        while (buyer.equals(product.getSeller())) {
-            buyer = this.userRepository.getRandomEntity().orElseThrow(NoSuchElementException::new);
-        }
+        if (product.getPrice().compareTo(BigDecimal.valueOf(700L)) > 0) {
 
-        product.setBuyer(buyer);
+            User buyer = this.userRepository.getRandomEntity().orElseThrow(NoSuchElementException::new);
+            while (buyer.equals(product.getSeller())) {
+                buyer = this.userRepository.getRandomEntity().orElseThrow(NoSuchElementException::new);
+            }
+
+            product.setBuyer(buyer);
+        }
 
         return product;
     }

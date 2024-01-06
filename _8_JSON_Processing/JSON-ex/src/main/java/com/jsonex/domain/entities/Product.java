@@ -1,9 +1,6 @@
 package com.jsonex.domain.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +18,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product extends BaseEntity {
+    @Column
     private String name;
+    @Column
     private BigDecimal price;
     @ManyToOne
     @Fetch(FetchMode.JOIN)
