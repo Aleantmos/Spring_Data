@@ -16,4 +16,6 @@ public enum Paths {
             Path.of("src", "main", "resources", "outputs", "users-sold-products.json");
     public static final Path CATEGORIES_BY_PRODUCTS_JSON_PATH =
             Path.of("src", "main", "resources", "outputs", "categories-by-products.json");
+    public static final Path USERS_AND_PRODUCTS_JSON_PATH =
+            Path.of("src", "main", "resources", "outputs", "users-and-products.json");
 }

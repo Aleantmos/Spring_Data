@@ -2,8 +2,7 @@ package com.jsonex.domain.dto.products;
 
 import com.jsonex.domain.dto.categories.CategoryDto;
 import com.jsonex.domain.dto.users.UserDto;
-import com.jsonex.domain.entities.Category;
-import com.jsonex.domain.entities.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +26,6 @@ public class ProductDto {
     public ProductInRangeWithoutBuyerDto toProductInRangeWithoutBuyerDto() {
         return new ProductInRangeWithoutBuyerDto(name, price, seller.getFullName());
     }
+
+
 }

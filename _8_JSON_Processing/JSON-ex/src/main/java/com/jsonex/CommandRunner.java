@@ -38,5 +38,6 @@ public class CommandRunner implements CommandLineRunner {
 
         this.userService.findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerFirstName();
         this.categoryService.getCategorySummary();
+        this.userService.usersAndProducts();
     }
 }
