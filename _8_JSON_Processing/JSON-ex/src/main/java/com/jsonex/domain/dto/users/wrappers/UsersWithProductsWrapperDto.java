@@ -1,5 +1,6 @@
-package com.jsonex.domain.dto.users;
+package com.jsonex.domain.dto.users.wrappers;
 
+import com.jsonex.domain.dto.users.UserWithProductsDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

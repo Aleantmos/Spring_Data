@@ -1,25 +1,24 @@
-package com.jsonex.domain.dto.users;
+package com.jsonex.domain.dto.products.wrappers;
 
+import com.jsonex.domain.dto.products.ProductImportDto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement(name = "users")
+@XmlRootElement(name = "products")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class UserImportDto {
-    @XmlAttribute(name = "first-name")
-    private String firstName;
-    @XmlAttribute(name = "last-name")
-    private String lastName;
-    @XmlAttribute
-    private Integer age;
+public class ProductsImportWrapperDto {
+    @XmlElement(name = "product")
+    private List<ProductImportDto> products;
 }

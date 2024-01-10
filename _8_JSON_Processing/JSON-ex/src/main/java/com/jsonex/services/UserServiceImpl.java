@@ -2,7 +2,7 @@ package com.jsonex.services;
 
 import com.jsonex.domain.dto.users.UserDto;
 import com.jsonex.domain.dto.users.UserWithProductsDto;
-import com.jsonex.domain.dto.users.UsersWithProductsWrapperDto;
+import com.jsonex.domain.dto.users.wrappers.UsersWithProductsWrapperDto;
 import com.jsonex.domain.dto.users.UsersWithSoldProductsDto;
 import com.jsonex.repostitories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

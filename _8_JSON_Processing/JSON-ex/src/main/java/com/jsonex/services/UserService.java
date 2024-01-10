@@ -1,6 +1,6 @@
 package com.jsonex.services;
 
-import com.jsonex.domain.dto.users.UsersWithProductsWrapperDto;
+import com.jsonex.domain.dto.users.wrappers.UsersWithProductsWrapperDto;
 import com.jsonex.domain.dto.users.UsersWithSoldProductsDto;
 
 import java.io.IOException;
