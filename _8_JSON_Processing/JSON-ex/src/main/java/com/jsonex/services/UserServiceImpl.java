@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public UsersWithProductsWrapperDto usersAndProducts()
-            throws IOException {
+            throws IOException, JAXBException {
         final List<UserWithProductsDto> usersAndProducts = this.userRepository
                 .findAllBySellingProductsBuyerIsNotNull()
                 .orElseThrow(NoSuchElementException::new)
@@ -66,9 +66,8 @@ public class UserServiceImpl implements UserService {
         final UsersWithProductsWrapperDto usersWithProductsWrapperDto =
                 new UsersWithProductsWrapperDto(usersAndProducts);
 
-
-
         writeJsonIntoFile(usersWithProductsWrapperDto, USERS_AND_PRODUCTS_JSON_PATH);
+        writeXMLIntoFile(usersWithProductsWrapperDto, USERS_AND_PRODUCTS_XML_PATH);
 
         return usersWithProductsWrapperDto;
 

@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static com.jsonex.constants.Paths.*;
+import static com.jsonex.constants.Utils.GSON;
 import static com.jsonex.constants.Utils.MODEL_MAPPER;
 
 @Service
@@ -104,8 +105,8 @@ public class SeedServiceImpl implements SeedService {
 //                    .map(this::setRandomBuyer)
 //                    .map(this::setRandomCategories)
 //                    .collect(Collectors.toList());
-//
-            JAXBContext context = JAXBContext.newInstance(ProductImportDto.class);
+
+            JAXBContext context = JAXBContext.newInstance(ProductsImportWrapperDto.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
             ProductsImportWrapperDto productsWrapperDto = (ProductsImportWrapperDto) unmarshaller.unmarshal(fileReader);

@@ -12,5 +12,5 @@ public interface UserService {
     List<UserWithSoldProductsDto> findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerFirstName() throws IOException, JAXBException;
 
     UsersWithProductsWrapperDto usersAndProducts()
-            throws IOException;
+            throws IOException, JAXBException;
 }

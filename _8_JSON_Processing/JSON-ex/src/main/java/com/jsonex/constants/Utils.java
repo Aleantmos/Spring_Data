@@ -2,7 +2,6 @@ package com.jsonex.constants;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jsonex.domain.dto.products.wrappers.ProductsInRangeWithNoBuyerWrapperDto;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-import static com.jsonex.constants.Paths.PRODUCTS_WITHOUT_BUYERS_IN_RANGE_XML_PATH;
 
 public enum Utils {
     ;
@@ -30,7 +28,7 @@ public enum Utils {
         fileWriter.close();
     }
 
-    public static <T> void writeXMLIntoFile(T data, Path filePath) throws IOException, JAXBException {
+    public static <T> void writeXMLIntoFile(T data, Path filePath) throws JAXBException {
         final File file = filePath.toFile();
 
         JAXBContext context = JAXBContext.newInstance(data.getClass());
