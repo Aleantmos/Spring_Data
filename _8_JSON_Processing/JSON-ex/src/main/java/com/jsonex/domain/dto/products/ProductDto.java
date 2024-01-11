@@ -23,8 +23,8 @@ public class ProductDto {
     private UserDto seller;
     private Set<CategoryDto> categories;
 
-    public ProductInRangeWithoutBuyerDto toProductInRangeWithoutBuyerDto() {
-        return new ProductInRangeWithoutBuyerDto(name, price, seller.getFullName());
+    public SingleProductInRangeWithoutBuyerDto toProductInRangeWithoutBuyerDto() {
+        return new SingleProductInRangeWithoutBuyerDto(name, price, seller.getFullName());
     }
 
 

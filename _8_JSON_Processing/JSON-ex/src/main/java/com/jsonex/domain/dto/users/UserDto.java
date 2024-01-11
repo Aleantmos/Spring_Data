@@ -2,8 +2,7 @@ package com.jsonex.domain.dto.users;
 
 import com.jsonex.domain.dto.products.ProductBasicInfo;
 import com.jsonex.domain.dto.products.ProductDto;
-import com.jsonex.domain.entities.Product;
-import com.jsonex.domain.entities.User;
+import com.jsonex.domain.dto.products.ProductsSoldWithCountDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

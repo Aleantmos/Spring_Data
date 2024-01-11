@@ -3,8 +3,10 @@ package com.jsonex.services;
 import com.jsonex.domain.dto.users.UserDto;
 import com.jsonex.domain.dto.users.UserWithProductsDto;
 import com.jsonex.domain.dto.users.wrappers.UsersWithProductsWrapperDto;
-import com.jsonex.domain.dto.users.UsersWithSoldProductsDto;
+import com.jsonex.domain.dto.users.UserWithSoldProductsDto;
+import com.jsonex.domain.dto.users.wrappers.UsersWithSoldProductsWrapperDto;
 import com.jsonex.repostitories.UserRepository;
+import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import static com.jsonex.constants.Paths.USERS_AND_PRODUCTS_JSON_PATH;
-import static com.jsonex.constants.Paths.USERS_WITH_SOLD_PRODUCTS_JSON_PATH;
-import static com.jsonex.constants.Utils.MODEL_MAPPER;
-import static com.jsonex.constants.Utils.writeJsonIntoFile;
+import static com.jsonex.constants.Paths.*;
+import static com.jsonex.constants.Utils.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,16 +30,22 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<UsersWithSoldProductsDto> findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerFirstName()
-            throws IOException {
-        final List<UsersWithSoldProductsDto> usersWithSoldProducts = this.userRepository
+    public List<UserWithSoldProductsDto> findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerFirstName()
+            throws IOException, JAXBException {
+        final List<UserWithSoldProductsDto> usersWithSoldProducts = this.userRepository
                 .findAllBySellingProductsBuyerIsNotNull()
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
-                .map(user -> MODEL_MAPPER.map(user, UsersWithSoldProductsDto.class))
+                .map(user -> MODEL_MAPPER.map(user, UserWithSoldProductsDto.class))
                 .collect(Collectors.toList());
 
+        UsersWithSoldProductsWrapperDto usersWithSoldProductsWrapperDto =
+                new UsersWithSoldProductsWrapperDto().ofListOfUsersWithSoldProductsDto(usersWithSoldProducts);
+
+
         writeJsonIntoFile(usersWithSoldProducts, USERS_WITH_SOLD_PRODUCTS_JSON_PATH);
+
+        writeXMLIntoFile(usersWithSoldProductsWrapperDto, USERS_WITH_SOLD_PRODUCTS_XML_PATH);
 
         return usersWithSoldProducts;
 
@@ -56,7 +62,11 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
 
 
-        final UsersWithProductsWrapperDto usersWithProductsWrapperDto = new UsersWithProductsWrapperDto(usersAndProducts);
+
+        final UsersWithProductsWrapperDto usersWithProductsWrapperDto =
+                new UsersWithProductsWrapperDto(usersAndProducts);
+
+
 
         writeJsonIntoFile(usersWithProductsWrapperDto, USERS_AND_PRODUCTS_JSON_PATH);
 

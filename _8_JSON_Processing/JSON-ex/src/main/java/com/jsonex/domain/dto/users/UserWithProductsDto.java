@@ -1,11 +1,11 @@
 package com.jsonex.domain.dto.users;
 
+import com.jsonex.domain.dto.products.ProductsSoldWithCountDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor

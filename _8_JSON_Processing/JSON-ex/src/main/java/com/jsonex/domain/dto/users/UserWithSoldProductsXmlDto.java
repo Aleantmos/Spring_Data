@@ -1,9 +1,7 @@
 package com.jsonex.domain.dto.users;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import com.jsonex.domain.dto.products.wrappers.ProductsSoldWrapperDto;
+import jakarta.xml.bind.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,11 +13,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class UserImportDto {
+public class UserWithSoldProductsXmlDto {
+
     @XmlAttribute(name = "first-name")
     private String firstName;
     @XmlAttribute(name = "last-name")
     private String lastName;
-    @XmlAttribute
-    private Integer age;
+    @XmlElement(name = "sold-products")
+    private ProductsSoldWrapperDto boughtProducts;
 }

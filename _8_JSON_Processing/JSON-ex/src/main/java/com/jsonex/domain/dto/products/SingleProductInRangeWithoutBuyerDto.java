@@ -1,5 +1,6 @@
 package com.jsonex.domain.dto.products;
 
+import jakarta.xml.bind.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,14 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductInRangeWithoutBuyerDto {
+@XmlRootElement(name = "product")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class SingleProductInRangeWithoutBuyerDto {
+    @XmlAttribute
     private String name;
+    @XmlAttribute
     private BigDecimal price;
+    @XmlAttribute
     private String seller;
 
 }

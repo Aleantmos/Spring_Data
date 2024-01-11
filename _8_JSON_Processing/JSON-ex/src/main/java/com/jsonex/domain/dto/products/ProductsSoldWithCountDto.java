@@ -1,4 +1,4 @@
-package com.jsonex.domain.dto.users;
+package com.jsonex.domain.dto.products;
 
 import com.jsonex.domain.dto.products.ProductBasicInfo;
 import lombok.Getter;

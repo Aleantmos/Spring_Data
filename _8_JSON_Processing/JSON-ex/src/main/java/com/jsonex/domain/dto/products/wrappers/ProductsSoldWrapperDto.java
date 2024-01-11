@@ -1,5 +1,6 @@
-package com.jsonex.domain.dto.products;
+package com.jsonex.domain.dto.products.wrappers;
 
+import com.jsonex.domain.dto.products.ProductSoldDto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -9,16 +10,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement(name = "product")
+@XmlRootElement(name = "sold-products")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ProductImportDto {
-    @XmlElement
-    private String name;
-    @XmlElement
-    private BigDecimal price;
+public class ProductsSoldWrapperDto {
+    @XmlElement(name = "product")
+    private List<ProductSoldDto> boughtProducts;
 }

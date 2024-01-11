@@ -1,14 +1,15 @@
 package com.jsonex.services;
 
 import com.jsonex.domain.dto.users.wrappers.UsersWithProductsWrapperDto;
-import com.jsonex.domain.dto.users.UsersWithSoldProductsDto;
+import com.jsonex.domain.dto.users.UserWithSoldProductsDto;
+import jakarta.xml.bind.JAXBException;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
 
-    List<UsersWithSoldProductsDto> findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerFirstName() throws IOException;
+    List<UserWithSoldProductsDto> findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerFirstName() throws IOException, JAXBException;
 
     UsersWithProductsWrapperDto usersAndProducts()
             throws IOException;
