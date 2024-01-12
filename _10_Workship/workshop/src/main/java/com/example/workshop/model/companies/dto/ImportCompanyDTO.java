@@ -1,5 +1,6 @@
 package com.example.workshop.model.companies.dto;
 
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -10,6 +11,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class ImportCompanyDTO {
 
     @XmlAttribute(name = "name")
+    @NotNull
     public String name;
 
     public ImportCompanyDTO() {
