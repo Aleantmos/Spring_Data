@@ -7,8 +7,9 @@ import softuni.exam.models.entities.city.City;
 import softuni.exam.models.entities.enums.DayENUM;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 
 import java.time.LocalTime;
@@ -28,10 +29,12 @@ public class Forecast {
     @NotNull
     private DayENUM dayOfWeek;
     @Column(name = "max_temperature", nullable = false)
-    @Size(min = -20, max = 60)
+    @Min(-20)
+    @Max(60)
     private Double maxTemperature;
     @Column(name = "min_temperature", nullable = false)
-    @Size(min = -20, max = 60)
+    @Min(-20)
+    @Max(60)
     private Double minTemperature;
     @Column(nullable = false)
     private LocalTime sunrise;

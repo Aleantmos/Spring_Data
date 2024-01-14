@@ -5,4 +5,5 @@ public enum AppPaths {
 
     public static final String COUNTRY_JSON_FILE_PATH = "src/main/resources/files/json/countries.json";
     public static final String CITY_JSON_FILE_PATH = "src/main/resources/files/json/cities.json";
+    public static final String FORECAST_XML_FILE_PATH = "src/main/resources/files/xml/forecasts.xml";
 }

@@ -71,6 +71,11 @@ public class CityServiceImpl implements CityService {
         return "Cities already imported.";
     }
 
+    @Override
+    public City getCityById(Long cityId) {
+        return cityRepository.findById(cityId).orElse(null);
+    }
+
     private void setConverter() {
         modelMapper.addMappings(new PropertyMap<CityImportDto, City>() {
             @Override

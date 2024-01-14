@@ -2,12 +2,8 @@ package softuni.exam.util;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
-import softuni.exam.models.entities.BaseEntity;
-import softuni.exam.models.entities.country.dto.CountryImportDto;
-
 import java.io.*;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Component

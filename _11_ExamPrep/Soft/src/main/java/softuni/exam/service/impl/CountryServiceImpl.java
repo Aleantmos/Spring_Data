@@ -1,6 +1,5 @@
 package softuni.exam.service.impl;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import org.modelmapper.ModelMapper;
@@ -10,9 +9,6 @@ import softuni.exam.models.entities.country.Country;
 import softuni.exam.models.entities.country.dto.CountryImportDto;
 import softuni.exam.repository.CountryRepository;
 import softuni.exam.service.CountryService;
-
-import java.io.*;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -49,7 +45,6 @@ public class CountryServiceImpl implements CountryService {
             Set<String> uniqueCountryNames = new HashSet<>();
             try {
                 List<CountryImportDto> countryDtoCollection = objectFromJson(CountryImportDto[].class, COUNTRY_JSON_FILE_PATH);
-
 
                 List<Country> countries = countryDtoCollection.stream()
                         .filter(this::doSizeFilter)
