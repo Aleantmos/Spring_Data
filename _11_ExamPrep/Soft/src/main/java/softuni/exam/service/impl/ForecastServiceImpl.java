@@ -5,6 +5,7 @@ import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 import softuni.exam.models.entities.enums.DayENUM;
 import softuni.exam.models.entities.forecast.Forecast;
+import softuni.exam.models.entities.forecast.dto.ForecastExportDto;
 import softuni.exam.models.entities.forecast.dto.ForecastImportDto;
 import softuni.exam.models.entities.forecast.dto.ForecastWrapper;
 import softuni.exam.repository.ForecastRepository;
@@ -15,8 +16,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static softuni.exam.util.AppPaths.FORECAST_XML_FILE_PATH;
 import static softuni.exam.util.IO.reader;
@@ -75,6 +78,45 @@ public class ForecastServiceImpl implements ForecastService {
 
         return "Forecasts not imported.";
     }
+
+    @Override
+    public String exportForecasts() {
+        List<Object[]> roughObjects = forecastRepository
+                .getAllForecastsForSundayWithConstraints();
+
+        List<ForecastExportDto> forecastExportDtos = roughObjects.stream()
+                .map(roughObject -> new ForecastExportDto((Long) roughObject[0],
+                        (String) roughObject[1],
+                        (Double) roughObject[2],
+                        (Double) roughObject[3],
+                        (LocalTime) roughObject[4],
+                        (LocalTime) roughObject[5]))
+                .toList();
+
+        StringBuilder result = new StringBuilder();
+
+        List<String> stringListResult = forecastExportDtos.stream()
+                .sorted(Comparator.comparing(ForecastExportDto::getMaxTemp).reversed()
+                        .thenComparing(ForecastExportDto::getId))
+                .map(ForecastExportDto::toString)
+                .toList();
+
+        for (String element : stringListResult) {
+            result.append(element);
+        }
+
+        return result.toString();
+    }
+
+//    private ForecastExportDto mapToExportDto(Forecast forecast) {
+//        return ForecastExportDto.builder()
+//                .maxTemp(forecast.getMaxTemperature())
+//                .minTemp(forecast.getMinTemperature())
+//                .sunrise(forecast.getSunrise())
+//                .sunset(forecast.getSunset())
+//                .build();
+//
+//    }
 
     private void setConverter() {
         modelMapper.addMappings(new PropertyMap<ForecastImportDto, Forecast>() {
@@ -135,10 +177,5 @@ public class ForecastServiceImpl implements ForecastService {
                 .orElse(null);
 
         return result != null;
-    }
-
-    @Override
-    public String exportForecasts() {
-        return null;
     }
 }

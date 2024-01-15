@@ -15,7 +15,6 @@ public class ExportController extends BaseController {
 
     @Autowired
     public ExportController(ForecastService forecastService) {
-
         this.forecastService = forecastService;
     }
 
