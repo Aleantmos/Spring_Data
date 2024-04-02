@@ -1,10 +1,13 @@
 package softuni.exam.models.dto;
 
+import softuni.exam.adapters.LocalDateTimeAdapter;
+
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -16,6 +19,7 @@ public class OfferSeedDTO {
     @Positive
     private BigDecimal price;
     @XmlElement(name = "added-on")
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     private String addedOn;
     @XmlElement(name = "has-gold-status")
     private Boolean hasGoldStatus;
