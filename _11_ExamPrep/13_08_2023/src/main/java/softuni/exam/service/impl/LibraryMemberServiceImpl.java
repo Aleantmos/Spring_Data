@@ -63,12 +63,12 @@ public class LibraryMemberServiceImpl implements LibraryMemberService {
         return sb.toString().trim();
     }
 
-    private boolean phoneNumberUniqueness(String phoneNumber) {
-        return !libraryMemberRepository.existsByPhoneNumber(phoneNumber);
-    }
-
     @Override
     public LibraryMember getLibraryMemberById(int id) {
         return libraryMemberRepository.getMemberById(id);
+    }
+
+    private boolean phoneNumberUniqueness(String phoneNumber) {
+        return !libraryMemberRepository.existsByPhoneNumber(phoneNumber);
     }
 }

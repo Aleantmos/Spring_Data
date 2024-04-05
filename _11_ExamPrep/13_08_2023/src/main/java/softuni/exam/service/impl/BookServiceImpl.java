@@ -63,16 +63,16 @@ public class BookServiceImpl implements BookService {
         return sb.toString().trim();
     }
 
+    @Override
+    public Book getBookByName(String name) {
+        return bookRepository.getBookByTitle(name);
+    }
+
     private boolean bookFilter(BookSeedDTO bookSeedDTO) {
         return myValidation.isValid(bookSeedDTO) && !checkTitleUniqueness(bookSeedDTO.getTitle());
     }
 
     private boolean checkTitleUniqueness(String title) {
         return bookRepository.existsByTitle(title);
-    }
-
-    @Override
-    public Book getBookByName(String name) {
-        return bookRepository.getBookByTitle(name);
     }
 }

@@ -2,6 +2,7 @@ package softuni.exam.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import softuni.exam.models.dto.BorrowingRecordProjection;
 import softuni.exam.models.dto.BorrowingRecordSeedDTO;
 import softuni.exam.models.dto.BorrowingRecordSeedRootDTO;
 import softuni.exam.models.entity.Book;
@@ -18,6 +19,8 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class BorrowingRecordsServiceImpl implements BorrowingRecordsService {
@@ -86,6 +89,31 @@ public class BorrowingRecordsServiceImpl implements BorrowingRecordsService {
         return sb.toString().trim();
     }
 
+    @Override
+    public String exportBorrowingRecords() {
+        LocalDate beforeDate = LocalDate.parse("2021-09-10");
+        List<BorrowingRecordProjection> recordsBeforeData =
+                borrowingRecordRepository.getRecordsBeforeData(beforeDate);
+
+        StringBuilder sb = new StringBuilder();
+
+        for (BorrowingRecordProjection record : recordsBeforeData) {
+            sb.append(
+                    String.format(
+                                    "Book title: %s\n" +
+                                    "*Book author: %s\n" +
+                                    "**Date borrowed: %s\n" +
+                                    "***Borrowed by: %s\n",
+                            record.getTitle(),
+                            record.getAuthor(),
+                            record.getBorrowDate().toString(),
+                            record.getLibraryMemberName()
+                    )
+            );
+        }
+        return sb.toString().trim();
+    }
+
     private Boolean validateBorrowingRecord(BorrowingRecord borrowingRecord) {
 
         boolean isValid = myValidation.isValid(borrowingRecord);
@@ -97,10 +125,5 @@ public class BorrowingRecordsServiceImpl implements BorrowingRecordsService {
 
     private boolean checkRemarks(String remarks) {
         return remarks.length() > 3 && remarks.length() <= 100;
-    }
-
-    @Override
-    public String exportBorrowingRecords() {
-        return null;
     }
 }
