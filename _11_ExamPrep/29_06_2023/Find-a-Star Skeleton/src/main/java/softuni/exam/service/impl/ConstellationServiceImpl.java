@@ -63,6 +63,11 @@ public class ConstellationServiceImpl implements ConstellationService {
         return sb.toString().trim();
     }
 
+    @Override
+    public Constellation getConstellationById(Long id) {
+        return constellationRepository.findById(id).orElse(null);
+    }
+
     private boolean filterConstellations(ConstellationSeedDTO constellationSeedDTO) {
         return myValidation.isValid(constellationSeedDTO) &&
                 checkConstellationUniqueness(constellationSeedDTO.getName());

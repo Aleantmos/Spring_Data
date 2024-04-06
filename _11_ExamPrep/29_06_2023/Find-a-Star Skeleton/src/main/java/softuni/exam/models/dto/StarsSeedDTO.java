@@ -2,6 +2,7 @@ package softuni.exam.models.dto;
 
 import com.google.gson.annotations.Expose;
 
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 public class StarsSeedDTO {
@@ -9,6 +10,7 @@ public class StarsSeedDTO {
     @Size(min = 6)
     private String description;
     @Expose
+    @Positive
     private Double lightYears;
     @Expose
     @Size(min = 2, max = 30)
@@ -16,7 +18,7 @@ public class StarsSeedDTO {
     @Expose
     private String starType;
     @Expose
-    private Integer constellation;
+    private Long constellation;
 
     public StarsSeedDTO() {
     }
@@ -53,11 +55,11 @@ public class StarsSeedDTO {
         this.starType = starType;
     }
 
-    public Integer getConstellation() {
+    public Long getConstellation() {
         return constellation;
     }
 
-    public void setConstellation(Integer constellation) {
+    public void setConstellation(Long constellation) {
         this.constellation = constellation;
     }
 }

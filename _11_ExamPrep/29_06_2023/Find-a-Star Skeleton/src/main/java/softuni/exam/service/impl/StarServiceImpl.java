@@ -3,9 +3,12 @@ package softuni.exam.service.impl;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Repository;
+import softuni.exam.models.dto.StarProjection;
 import softuni.exam.models.dto.StarsSeedDTO;
+import softuni.exam.models.entity.Constellation;
 import softuni.exam.models.entity.Star;
 import softuni.exam.repository.StarRepository;
+import softuni.exam.service.ConstellationService;
 import softuni.exam.service.StarService;
 import softuni.exam.util.MyValidation;
 
@@ -13,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.List;
 
 @Repository
 public class StarServiceImpl implements StarService {
@@ -21,12 +25,14 @@ public class StarServiceImpl implements StarService {
     private final Gson gson;
     private final ModelMapper modelMapper;
     private final MyValidation myValidation;
+    private final ConstellationService constellationService;
 
-    public StarServiceImpl(Gson gson, StarRepository starRepository, ModelMapper modelMapper, MyValidation myValidation) {
+    public StarServiceImpl(Gson gson, StarRepository starRepository, ModelMapper modelMapper, MyValidation myValidation, ConstellationService constellationService) {
         this.gson = gson;
         this.starRepository = starRepository;
         this.modelMapper = modelMapper;
         this.myValidation = myValidation;
+        this.constellationService = constellationService;
     }
 
     @Override
@@ -57,7 +63,11 @@ public class StarServiceImpl implements StarService {
                     }
                     return filtered;
                 })
-                .map(starsSeedDTO -> modelMapper.map(starsSeedDTO, Star.class))
+                .map(starsSeedDTO -> {
+                    Star star = modelMapper.map(starsSeedDTO, Star.class);
+                    star.setConstellation(constellationService.getConstellationById(starsSeedDTO.getConstellation()));
+                    return star;
+                })
                 .forEach(starRepository::save);
 
         return sb.toString().trim();
@@ -65,7 +75,27 @@ public class StarServiceImpl implements StarService {
 
     @Override
     public String exportStars() {
-        return null;
+        List<StarProjection> starProjections = starRepository.exportNonObservedStars();
+
+        StringBuilder sb = new StringBuilder();
+
+        for (StarProjection starProjection : starProjections) {
+            System.out.println(starProjection.getLightYears() + " " + starProjection.getDescription() + starProjection.getStarName());
+
+            sb.append(
+                    String.format(
+                            "Star: %s\n" +
+                            "   *Distance: %.2f light years\n" +
+                            "   **Description: %s\n" +
+                            "   ***Constellation: %s\n",
+                            starProjection.getStarName(),
+                            starProjection.getLightYears(),
+                            starProjection.getDescription(),
+                            starProjection.getConstellationName()
+                    )
+            );
+        }
+        return sb.toString().trim();
     }
 
     @Override
