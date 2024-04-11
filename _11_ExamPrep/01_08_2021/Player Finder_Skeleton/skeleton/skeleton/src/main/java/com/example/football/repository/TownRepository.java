@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TownRepository extends JpaRepository<Town, Long> {
     @Query("select t from Town t where t.name = :name")
-    Town getTownByName(@Param("name")String name);
+    Town getTownByName(@Param("name") String name);
 
 }

@@ -2,6 +2,7 @@ package com.example.football.models.dto;
 
 import com.google.gson.annotations.Expose;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 public class TeamSeedDTO {
@@ -13,7 +14,7 @@ public class TeamSeedDTO {
     @Size(min = 3)
     private String stadiumName;
     @Expose
-    @Size(min = 1000)
+    @Min(value = 1000)
     private Integer fanBase;
     @Expose
     @Size(min = 10)

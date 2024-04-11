@@ -53,11 +53,11 @@ public class TeamServiceImpl implements TeamService {
                     boolean filtered = filterTeams(teamSeedDTO);
                     if (filtered) {
                         Team team = modelMapper.map(teamSeedDTO, Team.class);
-                        Town townByName = townService.getTownByName(teamSeedDTO.getName());
+                        Town townByName = townService.getTownByName(teamSeedDTO.getTownName());
 
                         team.setTown(townByName);
                         teamRepository.save(team);
-                        sb.append(String.format("Successfully imported Team Rowe - 333624",
+                        sb.append(String.format("Successfully imported %s - %d",
                                         team.getName(), team.getFanBase()))
                                 .append(System.lineSeparator());
                     } else {
@@ -67,6 +67,11 @@ public class TeamServiceImpl implements TeamService {
                 });
 
         return sb.toString().trim();
+    }
+
+    @Override
+    public Team getTeamByName(String name) {
+        return teamRepository.getTeamByName(name);
     }
 
     private boolean filterTeams(TeamSeedDTO teamSeedDTO) {

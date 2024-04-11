@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface TeamRepository extends JpaRepository<Team, Long> {
     @Query("select count(t) = 0 from Team t where t.name = :name")
     Boolean checkNameUniqueness(@Param("name") String name);
+
+    @Query("select t from Team t where t.name = :name")
+    Team getTeamByName(@Param("name") String name);
 }

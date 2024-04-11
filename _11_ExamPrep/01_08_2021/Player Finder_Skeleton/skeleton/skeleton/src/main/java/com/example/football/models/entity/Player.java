@@ -12,8 +12,8 @@ import java.util.List;
 public class Player extends BaseEntity {
     @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "second_name", nullable = false)
-    private String secondName;
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
     @Column(unique = true, nullable = false)
     private String email;
     @Column(name = "birth_date", nullable = false)
@@ -36,12 +36,12 @@ public class Player extends BaseEntity {
         this.firstName = firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
