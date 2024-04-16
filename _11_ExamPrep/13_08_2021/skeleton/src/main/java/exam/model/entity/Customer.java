@@ -19,4 +19,44 @@ public class Customer extends BaseEntity {
     private LocalDate registeredOn;
     @ManyToOne
     private Town town;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDate getRegisteredOn() {
+        return registeredOn;
+    }
+
+    public void setRegisteredOn(LocalDate registeredOn) {
+        this.registeredOn = registeredOn;
+    }
+
+    public Town getTown() {
+        return town;
+    }
+
+    public void setTown(Town town) {
+        this.town = town;
+    }
 }

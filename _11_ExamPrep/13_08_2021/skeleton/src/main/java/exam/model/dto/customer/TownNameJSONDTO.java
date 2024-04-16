@@ -1,9 +1,12 @@
-package exam.model.dto.laptop;
+package exam.model.dto.customer;
 
 import com.google.gson.annotations.Expose;
 
-public class ShopNameDTO {
+import javax.validation.constraints.Size;
+
+public class TownNameJSONDTO {
     @Expose
+    @Size(min = 2)
     private String name;
 
     public String getName() {
